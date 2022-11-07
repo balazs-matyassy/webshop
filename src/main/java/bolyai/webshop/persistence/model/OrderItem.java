@@ -3,9 +3,9 @@ package bolyai.webshop.persistence.model;
 import javax.persistence.*;
 
 @Entity
-public class Item {
+public class OrderItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @ManyToOne
@@ -16,6 +16,16 @@ public class Item {
     private int quantity;
 
     private int unitPrice;
+
+    public OrderItem() {
+    }
+
+    public OrderItem(Order order, String product, int quantity, int unitPrice) {
+        this.order = order;
+        this.product = product;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+    }
 
     public void setId(Long id) {
         this.id = id;
